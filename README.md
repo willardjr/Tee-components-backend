@@ -4,7 +4,7 @@ This repository is the PHP backend for the Tee Components website. It contains t
 
 ## Deploy to Render
 
-Create a Render Web Service from this repository. Render will use the included Dockerfile. Create a MySQL database with a provider reachable from Render, then set the connection details in the service environment: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD`. Import `database/schema.sql`, apply the migrations required for your schema, and set `ADMIN_NAME`, `ADMIN_EMAIL`, and a strong `ADMIN_PASSWORD` before creating the first administrator with `php scripts/create-admin.php` from the Render shell.
+Create a Render Web Service from this repository. Render will use the included Dockerfile. Create a MySQL database with a provider reachable from Render, then set the connection details in the service environment: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD`. Create the database (named `tee_components` unless you set a different `DB_NAME`) and import `database/tee_components.sql` into it. This is the content and schema snapshot from the local database. For safety, the dump omits administrator accounts and password reset records. Set `ADMIN_NAME`, `ADMIN_EMAIL`, and a strong `ADMIN_PASSWORD` before creating the first administrator with `php scripts/create-admin.php` from the Render shell.
 
 Set `APP_URL` to the public Render service URL. Configure `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `ENQUIRY_RECIPIENT`, and `MAIL_FROM` as needed. Keep credentials in Render's environment settings; never commit `.env`.
 
